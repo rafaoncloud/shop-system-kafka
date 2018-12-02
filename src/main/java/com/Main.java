@@ -1,6 +1,9 @@
 package com;
 
+import com.costumer.kafka.MyReplyConsumer;
+import com.costumer.kafka.MyReplyProducer;
 import com.data.ItemTransactions;
+import com.kafkastreams.MyReplyStream;
 
 public class Main {
 
@@ -9,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         populateDatabaseWithItens();
 
-
+        startCostumer();
     }
 
     public static void populateDatabaseWithItens(){
@@ -23,5 +26,19 @@ public class Main {
         itemTransaction.addItem("Garlic", 18);
         itemTransaction.addItem("Pork", 35);
         itemTransaction.addItem("Beef", 25);
+    }
+
+    public static void startCostumer(){
+
+        try {
+            MyReplyProducer.getInstance().send("HIIII");
+            MyReplyProducer.getInstance().send("HIIII1");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        MyReplyStream.start();
+
+        MyReplyConsumer.run();
     }
 }

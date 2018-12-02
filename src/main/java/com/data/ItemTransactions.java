@@ -1,12 +1,12 @@
 package com.data;
 
 
+import jdk.jshell.spi.ExecutionControl;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class ItemTransactions {
 
     private static SessionFactory factory;
 
-    public ItemTransactions() {
+    private ItemTransactions() {
         try {
             factory = new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
@@ -95,8 +95,8 @@ public class ItemTransactions {
         }
     }
 
-    public void updateItem(Item item) {
-        throw new NotImplementedException();
+    public void updateItem(Item item) throws Exception {
+        throw new Exception("NOT IMPLEMENTED!");
     }
 
     public void updateItem(Integer EmployeeID, String name, int price) {
