@@ -16,7 +16,7 @@ import java.util.Properties;
 
 public class MyReplyConsumer {
 
-    public static final String TOPIC = KafkaShop.MY_REPLY_TOPIC_INPUT;
+    public static final String TOPIC = /*KafkaShop.MY_REPLY_TOPIC_INPUT;*/ KafkaShop.MY_REPLY_TOPIC_OUTPUT;
     public static final String KEY = "reply";
 
     public static final String GROUP_ID = "1";

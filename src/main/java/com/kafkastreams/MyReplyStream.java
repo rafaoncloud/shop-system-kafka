@@ -27,9 +27,9 @@ public abstract class MyReplyStream {
 
 
         StreamsBuilder builder = new StreamsBuilder();
-        KStream<String, String> replies = builder.stream(IN_TOPIC);
+        KStream<String, String> replies = builder.stream(OUT_TOPIC);
 
-        replies.to(OUT_TOPIC);
+        replies.to(IN_TOPIC);
 
         //KTable<String, String> repliesTable = replies.
         //        .to(OUT_TOPIC, Produced.with(Serdes.String(),Serdes.String()));
@@ -44,5 +44,6 @@ public abstract class MyReplyStream {
 
         KafkaStreams streams = new KafkaStreams(builder.build(), props);
         streams.start();
+        System.out.println("[Stream] Stream started from " + OUT_TOPIC + " to " + IN_TOPIC + ".");
     }
 }
