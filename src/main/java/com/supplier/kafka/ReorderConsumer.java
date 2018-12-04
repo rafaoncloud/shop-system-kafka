@@ -33,9 +33,12 @@ public class ReorderConsumer {
 
                 try {
                     shipmentsProducer.send(KafkaShop.deserializeItemFromJSON(record.value()));
+                    Thread.sleep(1000);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+
             }
         }
     }
