@@ -30,9 +30,8 @@ public class MyReplyProducer {
 
     private static MyReplyProducer single_instance = null;
 
-    public static final String TOPIC = KafkaShop.MY_REPLY_TOPIC_OUTPUT;
+    public static final String TOPIC = KafkaShop.MY_REPLY_TOPIC;
     public static final String KEY = "reply";
-
     private static Producer<String,String> producer;
 
     private MyReplyProducer(){
@@ -47,34 +46,34 @@ public class MyReplyProducer {
     }
 
     private void setUp(){
-
         Properties props = new Properties();
-        props.put(StreamsConfig.APPLICATION_ID_CONFIG, KafkaShop.APP_ID_CONFIG);
-
-        // kafka bootstrap server
+        //props.put(StreamsConfig.APPLICATION_ID_CONFIG, KafkaShop.APP_ID_CONFIG);
         props.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KafkaShop.SERVER_CONFIG);
-        props.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        props.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-
-        // producer acks
-        props.setProperty(ProducerConfig.ACKS_CONFIG, "all"); // strongest producing guarantee
-        props.setProperty(ProducerConfig.RETRIES_CONFIG, "3");
-        props.setProperty(ProducerConfig.LINGER_MS_CONFIG, "1");
-        // leverage idempotent producer from Kafka 0.11 !
-        props.setProperty(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true"); // ensure we don't push duplicates
+        props.put("acks", "all");
+        props.put("retries", 0);
+        props.put("batch.size", 16384);
+        props.put("linger.ms", 1);
+        props.put("buffer.memory", 33554432);
+        props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
         producer = new KafkaProducer<String,String>(props);
     }
 
     public void send(String replyMessage) throws Exception{
+
+        if(single_instance == null)
+            throw new RuntimeException("Instance not created!!!");
+
         try {
-            producer.send(replyTransaction(KEY, "Successfully Completed Transaction!"));
+            producer.send(new ProducerRecord<String,String>(TOPIC,KEY,replyMessage));
+            producer.flush();
         }catch (Exception e){
             throw e;
         }
     }
 
-    public ProducerRecord<String, String> replyTransaction(String key, String replyMessage){
+    private ProducerRecord<String, String> replyTransaction(String key, String replyMessage){
         // creates an empty json {}
         ObjectNode transaction = JsonNodeFactory.instance.objectNode();
 

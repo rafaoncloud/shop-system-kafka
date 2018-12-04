@@ -39,6 +39,6 @@ public class Main {
 
         MyReplyStream.start();
 
-        MyReplyConsumer.run();
+        //MyReplyConsumer.run();
     }
 }

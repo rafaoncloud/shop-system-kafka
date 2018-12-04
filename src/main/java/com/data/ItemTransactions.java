@@ -73,26 +73,28 @@ public class ItemTransactions {
     }
 
     // Debug
-    public void listItems() {
+    public List<Item> listItems() {
         Session session = factory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            List<Item> itens = session.createQuery("FROM Item").list();
+            List<Item> items = session.createQuery("FROM Item").list();
 //            for (Iterator iterator = itens.iterator(); iterator.hasNext(); ) {
 //                Item item = (Item) iterator.next();
 //                System.out.print("Item ID: " + item.getItemID());
 //                System.out.print("Name: " + item.getName());
 //                System.out.println("Price: " + item.getPrice());
 //            }
-            tx.commit();
+            //tx.commit();
+            return items;
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
         } finally {
             session.close();
         }
+        return null;
     }
 
     public void updateItem(Item item) throws Exception {
