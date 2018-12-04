@@ -6,14 +6,16 @@ public class Item {
     protected Integer ItemID;
     protected String name;
     protected int price;
+    protected int amount;
 
     public Item() {
     }
 
-    public Item(Integer itemId, String name, int price) {
+    public Item(Integer itemId, String name, int price, int quantity) {
         ItemID = itemId;
         this.name = name;
         this.price = price;
+        this.amount = amount;
     }
 
     public Integer getItemID() {
@@ -38,5 +40,13 @@ public class Item {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }

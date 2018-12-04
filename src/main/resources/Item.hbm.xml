@@ -16,5 +16,6 @@
 
         <property name = "name" column = "name" type = "string"/>
         <property name = "price" column = "price" type = "int"/>
+        <property name="amount" column = "amount" type = "int"/>
     </class>
 </hibernate-mapping>
