@@ -4,18 +4,16 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name = "com.data.Item" table = "item">
+    <class name = "com.data.Balance" table = "balance">
 
         <meta attribute = "class-description">
-            This class contains the item detail.
+            This class contains the shop balance.
         </meta>
 
-        <id name = "itemID" type = "int" column = "id">
+        <id name = "balanceID" type = "int" column = "id">
             <generator class="native"/>
         </id>
 
-        <property name = "name" column = "name" type = "string"/>
-        <property name = "price" column = "price" type = "int"/>
-        <property name="amount" column = "amount" type = "int"/>
+        <property name = "balance" column = "balance" type = "int"/>
     </class>
 </hibernate-mapping>

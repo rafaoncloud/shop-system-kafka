@@ -6,7 +6,6 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Properties;
 
@@ -16,18 +15,36 @@ public class MyReplyConsumer implements Runnable{
     public static final String KEY = "reply";
     public static final String GROUP_ID = "1";
 
-    @Override
-    public void run() {
-        KafkaConsumer <String,String> consumer = setUp();
+    private final KafkaConsumer <String,String> consumer;
+
+    public MyReplyConsumer(){
+        this.consumer = setUp();
 
         consumer.subscribe(Arrays.asList(TOPIC));
         System.out.println("[Consumer - MyReply] Subscribed to topic " + TOPIC);
+    }
+
+    public void receiveReply(){
+        while (true) {
+            ConsumerRecords<String, String> records = consumer.poll(1000);
+            for (ConsumerRecord<String, String> record : records) {
+                //System.out.printf("[My Reply] offset = %d, key = %s, value = %s\n",
+                //        record.offset(), record.key(), record.value());
+                System.out.println("[Reply] " + record.value());
+                return;
+            }
+        }
+    }
+
+    @Override
+    public void run() {
 
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(1000);
             for (ConsumerRecord<String, String> record : records) {
-                System.out.printf("[My Reply] offset = %d, key = %s, value = %s\n",
-                        record.offset(), record.key(), record.value());
+                //System.out.printf("[My Reply] offset = %d, key = %s, value = %s\n",
+                //        record.offset(), record.key(), record.value());
+                System.out.println("[Reply] " + record.value());
             }
         }
     }

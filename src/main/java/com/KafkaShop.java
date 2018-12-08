@@ -29,6 +29,8 @@ public abstract class KafkaShop {
     public static final String REPLY_KEY = "reply"; // Value - String
     public static final String ITEM_KEY = "transaction"; // Value - Items
 
+    public static final double MARGIN = 1.3;
+
     public static final String GROUP_ID = "1";
 
     public static String serializeItemToJSON(Item item){

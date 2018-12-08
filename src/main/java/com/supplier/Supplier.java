@@ -22,8 +22,8 @@ public class Supplier {
 
     public static void randomSupplier() {
 
-        ReorderConsumer reorderConsumer = new ReorderConsumer();
-        reorderConsumer.run(shipmentsProducer);
+        ReorderConsumer reorderConsumer = new ReorderConsumer(shipmentsProducer,10);
+        reorderConsumer.run();
     }
 
     public static List<Item> getProductsFromDatabase() {

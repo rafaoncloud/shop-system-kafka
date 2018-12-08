@@ -2,9 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8e0e31e-ecb3-41c6-86fb-095620f0c5f7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/data/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/data/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Item.hbm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Item.hbm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/EItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/data/Balance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/data/BalanceTransactions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/KafkaShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/KafkaShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/costumer/Costumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/costumer/Costumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/costumer/kafka/MyReplyConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/costumer/kafka/MyReplyConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/data/ItemTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/data/ItemTransactions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/owner/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/owner/Owner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/kafka/MyReplyProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/kafka/MyReplyProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/kafka/PurchasesConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/kafka/PurchasesConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shop/kafka/ShipmentsConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/shop/kafka/ShipmentsConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/supplier/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/supplier/Supplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/supplier/kafka/ReorderConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/supplier/kafka/ReorderConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Item.hbm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Item.hbm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/KafkaShop.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/KafkaShop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/costumer/Costumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/costumer/Costumer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/costumer/kafka/MyReplyConsumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/costumer/kafka/MyReplyConsumer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/data/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/data/Item.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/data/ItemTransactions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/data/ItemTransactions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/owner/Owner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/owner/Owner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/Shop.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/Shop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/kafka/PurchasesConsumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/kafka/PurchasesConsumer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/shop/kafka/ShipmentsConsumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/shop/kafka/ShipmentsConsumer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/supplier/Supplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/supplier/Supplier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/supplier/kafka/ReorderConsumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/supplier/kafka/ReorderConsumer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -16,118 +44,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/shop/kafka/MyReplyProducer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/shop/Shop.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1622#1623#0" expanded="true" />
-                <element signature="e#1663#1664#0" expanded="true" />
-                <element signature="e#1712#1713#0" expanded="true" />
-                <element signature="e#1780#1781#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/data/Item.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="4" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="50" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/supplier/Supplier.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#574#575#0" expanded="true" />
-                <element signature="e#606#607#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/supplier/kafka/ReorderConsumer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="28" column="74" selection-start-line="28" selection-start-column="74" selection-end-line="28" selection-end-column="74" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/costumer/Costumer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="53" column="62" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
+            <state relative-caret-position="189">
+              <caret line="122" column="45" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1522#1523#0" expanded="true" />
-                <element signature="e#1590#1591#0" expanded="true" />
+                <element signature="method#randomCostumer#0;class#Costumer#0" />
+                <element signature="method#printItem#0;class#Costumer#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/shop/kafka/PurchasesConsumer.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/costumer/kafka/MyReplyConsumer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/owner/Owner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
+            <state relative-caret-position="163">
+              <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -141,6 +76,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -176,30 +112,35 @@
         <option value="$PROJECT_DIR$/src/main/java/com/kafkastreams/ReorderStream.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kafkastreams/PurchasesStream.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kafkastreams/MyReplyStream.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/data/ItemTransactions.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/KafkaShop.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/costumer/kafka/PurchasesProducer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/costumer/kafka/MyReplyConsumer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/owner/Owner.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/owner/kafka/ReorderProducer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/shop/kafka/ReorderProducer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/shop/kafka/MyReplyProducer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/supplier/kafka/ShipmentsProducer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/supplier/Supplier.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/shop/kafka/PurchasesConsumer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/shop/kafka/ShipmentsConsumer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/costumer/Costumer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/shop/Shop.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/supplier/kafka/ReorderConsumer.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/data/Item.java" />
         <option value="$PROJECT_DIR$/src/main/resources/Item.hbm.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/Balance.hbm.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/data/Balance.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/KafkaShop.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/costumer/EItem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/supplier/Supplier.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/EItem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/owner/kafka/ReorderProducer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/data/BalanceTransactions.java" />
         <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/shop/Shop.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/owner/Owner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/supplier/kafka/ReorderConsumer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/data/ItemTransactions.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/shop/kafka/ShipmentsConsumer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/shop/kafka/PurchasesConsumer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/shop/kafka/MyReplyProducer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/costumer/kafka/MyReplyConsumer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/costumer/Costumer.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="777" />
@@ -346,7 +287,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543951586035" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544278014091" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -375,14 +316,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Supplier">
-    <configuration name="Costumer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Costumer Manual">
+    <configuration name="Costumer Manual" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.costumer.Costumer" />
       <module name="shop-system-kafka" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PROGRAM_PARAMETERS" value="manual" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.costumer.*" />
+          <option name="PATTERN" value="com.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -398,16 +339,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Owner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Owner Bot" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.owner.Owner" />
       <module name="shop-system-kafka" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PROGRAM_PARAMETERS" value="auto initial" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.owner.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Owner Manual" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.owner.Owner" />
+      <module name="shop-system-kafka" />
+      <option name="PROGRAM_PARAMETERS" value="manual initial" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -460,12 +409,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Owner Manual" />
+      <item itemvalue="Application.Costumer Manual" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Owner Bot" />
+      <item itemvalue="Application.Shop" />
+      <item itemvalue="Application.Supplier" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Costumer Manual" />
         <item itemvalue="Application.Supplier" />
-        <item itemvalue="Application.Owner" />
-        <item itemvalue="Application.Costumer" />
         <item itemvalue="Application.Shop" />
+        <item itemvalue="Application.Owner Bot" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -481,7 +438,7 @@
       <option name="presentableId" value="Default" />
       <updated>1543586056409</updated>
       <workItem from="1543586057793" duration="13054000" />
-      <workItem from="1543671730802" duration="30389000" />
+      <workItem from="1543671730802" duration="68894000" />
     </task>
     <task id="LOCAL-00001" summary="Kafka trial">
       <created>1543774166194</created>
@@ -501,23 +458,22 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43443000" />
+    <option name="totallyTimeSpent" value="81948000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="777" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1280" height="777" extended-state="6" />
     <layout>
-      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info id="Favorites" order="0" sideWeight="0.50248754" side_tool="true" weight="0.2536349" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Learn" order="5" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" sideWeight="0.49927008" visible="true" weight="0.2536349" />
+      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.49751243" visible="true" weight="0.2536349" />
       <window_info id="Persistence" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329927" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49919224" visible="true" weight="0.4131387" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49919224" visible="true" weight="0.44379562" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -574,6 +530,18 @@
     <MESSAGE value="Kafka trial" />
     <MESSAGE value="Kafka JsonNode" />
     <option name="LAST_COMMIT_MESSAGE" value="Kafka JsonNode" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/data/Balance.java</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/Owner.java" />
@@ -648,16 +616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/data/ItemTransactions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1017">
-          <caret line="75" column="33" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/kafkastreams/PurchasesStream.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -682,175 +640,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/costumer/kafka/PurchasesProducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="41" column="44" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/costumer/kafka/MyReplyConsumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/shop/kafka/ShipmentsConsumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/shop/kafka/ReorderProducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="48" column="5" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/owner/kafka/ReorderProducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="40" column="9" lean-forward="true" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/util/concurrent/ThreadLocalRandom.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
           <caret line="336" selection-start-line="336" selection-end-line="336" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/KafkaShop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="28" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/shop/kafka/MyReplyProducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/shop/kafka/PurchasesConsumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/costumer/Costumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="53" column="62" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1522#1523#0" expanded="true" />
-            <element signature="e#1590#1591#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/supplier/kafka/ShipmentsProducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/supplier/Supplier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-            <element signature="e#606#607#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/supplier/kafka/ReorderConsumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="28" column="74" selection-start-line="28" selection-start-column="74" selection-end-line="28" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/owner/Owner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/shop/Shop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1622#1623#0" expanded="true" />
-            <element signature="e#1663#1664#0" expanded="true" />
-            <element signature="e#1712#1713#0" expanded="true" />
-            <element signature="e#1780#1781#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/Item.hbm.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
@@ -861,17 +654,265 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/Item.hbm.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        <state relative-caret-position="149">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/data/Balance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="52" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+          <folding>
+            <element signature="e#168#169#0" expanded="true" />
+            <element signature="e#200#201#0" expanded="true" />
+            <element signature="e#251#252#0" expanded="true" />
+            <element signature="e#293#294#0" expanded="true" />
+            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#354#355#0" expanded="true" />
+            <element signature="e#397#398#0" expanded="true" />
+            <element signature="e#435#436#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/Balance.hbm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="123" column="19" selection-start-line="123" selection-start-column="19" selection-end-line="123" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/data/Item.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="4" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="50" selection-end-column="5" />
+        <state relative-caret-position="-151">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/lib/src.zip!/java.base/jdk/internal/util/Preconditions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/5.4.0.CR2/hibernate-core-5.4.0.CR2.jar!/org/hibernate/internal/SessionFactoryImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="426" selection-start-line="426" selection-end-line="426" />
+          <folding>
+            <element signature="e#23342#23343#0" expanded="true" />
+            <element signature="e#23412#23413#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/EItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/io/PrintStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="879" column="16" selection-start-line="879" selection-start-column="16" selection-end-line="879" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/supplier/kafka/ShipmentsProducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="38" column="20" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/supplier/Supplier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+            <element signature="e#606#607#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/supplier/kafka/ReorderConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="54" column="85" lean-forward="true" selection-start-line="54" selection-start-column="85" selection-end-line="54" selection-end-column="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/KafkaShop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/owner/Owner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="152" column="41" lean-forward="true" selection-start-line="152" selection-start-column="41" selection-end-line="152" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#randomOwner#0;class#Owner#0" />
+            <element signature="method#printItem#0;class#Owner#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/owner/kafka/ReorderProducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="15" column="57" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/data/ItemTransactions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="129" column="45" selection-start-line="129" selection-start-column="45" selection-end-line="129" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/data/BalanceTransactions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-683">
+          <caret line="37" column="46" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/shop/kafka/ShipmentsConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="73" column="101" selection-start-line="73" selection-start-column="101" selection-end-line="73" selection-end-column="101" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/shop/Shop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="21" column="50" lean-forward="true" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setItemPriceAndAmountZero#0;class#Shop#0" />
+            <element signature="method#populateDatabaseWithItens#0;class#Shop#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/shop/kafka/ReorderProducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-91">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/shop/kafka/MyReplyProducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/costumer/kafka/PurchasesProducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/shop/kafka/PurchasesConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-198">
+          <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/costumer/kafka/MyReplyConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/costumer/Costumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="122" column="45" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#randomCostumer#0;class#Costumer#0" />
+            <element signature="method#printItem#0;class#Costumer#0" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -72,21 +72,4 @@ public class MyReplyProducer {
             throw e;
         }
     }
-
-    private ProducerRecord<String, String> replyTransaction(String key, String replyMessage){
-        // creates an empty json {}
-        ObjectNode transaction = JsonNodeFactory.instance.objectNode();
-
-        // { "amount" : 46 } (46 is a random number between 0 and 100 excluded)
-        Integer amount = ThreadLocalRandom.current().nextInt(0,100);
-
-        // Instant.now() is to get the current time using Java 8
-        Instant now = Instant.now();
-
-        // we write the data to the json document
-        transaction.put("reply-message",replyMessage);
-        transaction.put("amount",10);
-        transaction.put("time", now.toString());
-        return new ProducerRecord<>(TOPIC ,key,transaction.toString());
-    }
 }

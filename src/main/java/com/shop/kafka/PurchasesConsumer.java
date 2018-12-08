@@ -2,12 +2,13 @@ package com.shop.kafka;
 
 import com.KafkaShop;
 import com.costumer.kafka.MyReplyProducer;
+import com.data.BalanceTransactions;
+import com.data.Item;
+import com.data.ItemTransactions;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.common.serialization.Serdes;
-import org.apache.kafka.streams.StreamsConfig;
 
 import java.util.Arrays;
 import java.util.Properties;
@@ -20,8 +21,13 @@ public class PurchasesConsumer implements Runnable {
 
     private final MyReplyProducer replyProducer;
 
-    public PurchasesConsumer(MyReplyProducer replyProducer){
+    private final ItemTransactions dbItem;
+    private final BalanceTransactions dbBalance;
+
+    public PurchasesConsumer(MyReplyProducer replyProducer, ItemTransactions dbItem, BalanceTransactions dbBalance){
         this.replyProducer = replyProducer;
+        this.dbItem = dbItem;
+        this.dbBalance = dbBalance;
     }
 
     @Override
@@ -38,12 +44,29 @@ public class PurchasesConsumer implements Runnable {
                         record.offset(), record.key(), record.value());
 
                 try {
-                    replyProducer.send("Item " + record.value() + " purchased successfully!");
+                    String reply = handlePurchase(KafkaShop.deserializeItemFromJSON(record.value()));
+                    replyProducer.send(reply);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }
+    }
+
+    private String handlePurchase(Item costumerRequest) throws Exception {
+        String itemName = costumerRequest.getName();
+        int amountToSell = costumerRequest.getAmount();
+        Item inDbItem = dbItem.getItem(itemName);
+        int totalCost = amountToSell * inDbItem.getPrice();
+
+        // Not enough items - amount to sell
+        if(amountToSell > inDbItem.getAmount()){
+            return "Shop rejected the order, there is not enough " + itemName + ".";
+        }
+        // The shop as the requested amount
+        dbBalance.balanceIncrease(totalCost);
+        dbItem.decreaseItemAmount(itemName,amountToSell);
+        return "Shop accepts the order and provided " + amountToSell + " " + itemName + ".";
     }
 
     private KafkaConsumer<String,String> setUp(){
