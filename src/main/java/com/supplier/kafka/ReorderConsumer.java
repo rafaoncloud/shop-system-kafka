@@ -49,18 +49,20 @@ public class ReorderConsumer {
             while (true) {
                 ConsumerRecords<String, String> records = consumer.poll(1000);
                 for (ConsumerRecord<String, String> record : records) {
-                    System.out.printf("[Supplier - Reorder] offset = %d, key = %s, value = %s\n",
-                            record.offset(), record.key(), record.value());
-
+                    //System.out.printf("[Supplier - Reorder] offset = %d, key = %s, value = %s\n",
+                    //        record.offset(), record.key(), record.value());
                     Item product = KafkaShop.deserializeItemFromJSON(record.value());
                     for(Item initialItemStatus : initialProductsStatusList){
-                        if(initialItemStatus.getName().compareToIgnoreCase(product.getName()) == 0){
+                        if(initialItemStatus.getName().equalsIgnoreCase(product.getName())){
                             // Set price to the item with the deduced margin
                             product.setPrice(initialItemStatus.getPrice());
+                            System.out.printf("[Supplier] Reorder request: Product(%s) Amount(%d) -- Shipment Price Per Unit(%d) Total(%d)\n",
+                                    product.getName(),product.getAmount(),product.getPrice(),product.getAmount()*product.getPrice());
+                            break;
                         }
                     }
-                    shipmentsProducer.send(product);
                     Thread.sleep(1000);
+                    shipmentsProducer.send(product);
                 }
             }
         } catch (Exception e) {
@@ -71,22 +73,24 @@ public class ReorderConsumer {
     // This orders came from the owner!
     // The shop is not programmed to send reorders before as the 10 initial products amount & price
     private void define10ItemsInitialValuesAndQuantities(KafkaConsumer<String, String> kafkaConsumer) throws Exception {
-        int initialProducts = productsRange;
-        System.out.println("[Supplier - Reorder] Waiting for the 10 initial products (Amount & Price) from owner.");
-        while (initialProducts > 0) {
+        int initialProducts = 0;
+        System.out.printf("[Supplier - Reorder] Waiting for the {%d} initial products (Amount & Price) from owner.\n",productsRange);
+        while (initialProducts < productsRange) {
             ConsumerRecords<String, String> records = kafkaConsumer.poll(1000);
             for (ConsumerRecord<String, String> record : records) {
-                System.out.printf("[Supplier - Reorder] Initial 10 Items -> offset = %d, key = %s, value = %s\n",
-                        record.offset(), record.key(), record.value());
                 Item productInitialStatus = KafkaShop.deserializeItemFromJSON(record.value());
 
                 // The product price with a cut margin of 30%
                 productInitialStatus.setPrice((int) Math.round(productInitialStatus.getPrice() * 0.70));
+                System.out.printf("[Supplier] Initial Product {%d}: Product(%s) Amount(%d) -- Shipment Price Per Unit(%d) Total(%d)\n",
+                        initialProducts + 1,
+                        productInitialStatus.getName(),productInitialStatus.getAmount(),
+                        productInitialStatus.getPrice(),productInitialStatus.getAmount()*productInitialStatus.getPrice());
                 shipmentsProducer.send(productInitialStatus);
 
                 // Add to list
                 initialProductsStatusList.add(productInitialStatus);
-                initialProducts--;
+                initialProducts++;
             }
         }
 

@@ -40,12 +40,16 @@ public class PurchasesConsumer implements Runnable {
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(1000);
             for (ConsumerRecord<String, String> record : records) {
-                System.out.printf("[Shop - Purchases] offset = %d, key = %s, value = %s\n",
-                        record.offset(), record.key(), record.value());
-
+                //System.out.printf("[Shop - Purchases] offset = %d, key = %s, value = %s\n",
+                //        record.offset(), record.key(), record.value());
                 try {
-                    String reply = handlePurchase(KafkaShop.deserializeItemFromJSON(record.value()));
-                    replyProducer.send(reply);
+                    Item costumerRequest = KafkaShop.deserializeItemFromJSON(record.value());
+                    int costumerId = costumerRequest.getPrice();
+                    String reply = handlePurchase(costumerRequest, costumerId);
+
+                    replyProducer.send(reply,costumerId);
+                    System.out.println("[Shop - Purchase] " + reply +
+                            "| Balance(" + dbBalance.getBalance().getBalance() + ").");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -53,7 +57,7 @@ public class PurchasesConsumer implements Runnable {
         }
     }
 
-    private String handlePurchase(Item costumerRequest) throws Exception {
+    private String handlePurchase(Item costumerRequest,final int costumerId) throws Exception {
         String itemName = costumerRequest.getName();
         int amountToSell = costumerRequest.getAmount();
         Item inDbItem = dbItem.getItem(itemName);
@@ -61,12 +65,12 @@ public class PurchasesConsumer implements Runnable {
 
         // Not enough items - amount to sell
         if(amountToSell > inDbItem.getAmount()){
-            return "Shop rejected the order, there is not enough " + itemName + ".";
+            return "Shop rejected the order from costumer " + costumerId + ", there is not enough " + itemName + ".";
         }
         // The shop as the requested amount
         dbBalance.balanceIncrease(totalCost);
         dbItem.decreaseItemAmount(itemName,amountToSell);
-        return "Shop accepts the order and provided " + amountToSell + " " + itemName + ".";
+        return "Shop accepts the order and provided " + amountToSell + " " + itemName + " with a cost of " + totalCost + ".";
     }
 
     private KafkaConsumer<String,String> setUp(){

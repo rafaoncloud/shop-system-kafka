@@ -45,6 +45,19 @@ public class MyReplyProducer {
         return single_instance;
     }
 
+    public void send(String replyMessage, int costumerId) throws Exception{
+
+        if(single_instance == null)
+            throw new RuntimeException("Instance not created!!!");
+
+        try {
+            producer.send(new ProducerRecord<String,String>(TOPIC + costumerId,KEY,replyMessage));
+            producer.flush();
+        }catch (Exception e){
+            throw e;
+        }
+    }
+
     private void setUp(){
         Properties props = new Properties();
         //props.put(StreamsConfig.APPLICATION_ID_CONFIG, KafkaShop.APP_ID_CONFIG);
@@ -58,18 +71,5 @@ public class MyReplyProducer {
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
         producer = new KafkaProducer<String,String>(props);
-    }
-
-    public void send(String replyMessage) throws Exception{
-
-        if(single_instance == null)
-            throw new RuntimeException("Instance not created!!!");
-
-        try {
-            producer.send(new ProducerRecord<String,String>(TOPIC,KEY,replyMessage));
-            producer.flush();
-        }catch (Exception e){
-            throw e;
-        }
     }
 }

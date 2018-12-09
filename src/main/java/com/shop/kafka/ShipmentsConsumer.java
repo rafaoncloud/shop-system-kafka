@@ -10,10 +10,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 public class ShipmentsConsumer implements Runnable {
 
@@ -27,7 +24,7 @@ public class ShipmentsConsumer implements Runnable {
     private final BalanceTransactions balanceDb;
     private final int productsRange;
 
-    private final List<Item> initialProductsStatusList;
+    private final HashMap<String, Item> initialProductsStatusMap; //<name of the item,item>
 
     public ShipmentsConsumer(ReorderProducer reorderProducer, ItemTransactions itemDb, BalanceTransactions balanceDb,
                              int productsRange) throws IllegalArgumentException {
@@ -38,7 +35,7 @@ public class ShipmentsConsumer implements Runnable {
         this.itemDb = itemDb;
         this.balanceDb = balanceDb;
         this.productsRange = productsRange;
-        this.initialProductsStatusList = new ArrayList<>();
+        this.initialProductsStatusMap = new HashMap<>();
     }
 
     @Override
@@ -65,7 +62,7 @@ public class ShipmentsConsumer implements Runnable {
                     // Pay to the supplier - shipment ignored after 3rd attempt
                     int balance = payToSupplier(item);
                     // Successfully paid to the supplier
-                    if(balance > 0){
+                    if (balance > 0) {
                         // Add item to the stock
                         Item itemUpdated = addProductToStock(item);
 
@@ -73,14 +70,14 @@ public class ShipmentsConsumer implements Runnable {
                                 + " Supplied with " + item.getAmount() + " " + item.getName() + " with a price of " +
                                 item.getPrice() + " and being sold by " + itemUpdated.getPrice() + " of " +
                                 itemUpdated.getAmount() + ".");
-                    }else{
+                    } else {
                         // Shipment timeout
                     }
                 }
                 // Check products stock, if it is low on stock (lower than 25% of the initial value)
                 // Constantly checking...
                 Item itemLowStock = checkStock();
-                if(itemLowStock != null) {
+                if (itemLowStock != null) {
                     reorderProducer.send(itemLowStock);
                 }
             }
@@ -91,23 +88,26 @@ public class ShipmentsConsumer implements Runnable {
 
     private Item checkStock() throws Exception {
         // Iterate items in the database
-        for(EItem enumItem : EItem.values()){
+        for (EItem enumItem : EItem.values()) {
             Item curProductStock = itemDb.getItem(enumItem.toString());
-            // Iterate initial items amount to know if stock is below 25%
-            for(Item initialProductStatus : initialProductsStatusList){
-                int initialAmount = initialProductStatus.getAmount();
-                int curAmount = curProductStock.getAmount();
+            Item initialProductStatus = initialProductsStatusMap.get(curProductStock.getName());
 
-                if(curAmount < (initialAmount / 4) || curAmount == 0){
-                    // Clean price from reorder object
-                    curProductStock.setPrice(0);
-                    // Amount to reorder 70% of the initial stock e.g., 10 initial -> reorder 7
-                    curProductStock.setAmount((int)Math.round(initialAmount * 0.7));
-                    curProductStock.setItemID(null);
-                    // Product to be reordered
-                    // Item Low in stock
-                    return curProductStock;
-                }
+            int curAmount = curProductStock.getAmount();
+            int initialAmount = initialProductStatus.getAmount();
+
+            // Check if item has a stock below 25% from initial amount
+            if (curAmount < (initialAmount / 4) || curAmount == 0) {
+                // Clean price from reorder object
+                curProductStock.setPrice(0);
+                // Amount to reorder 70% of the initial stock e.g., 10 initial -> reorder 7
+                curProductStock.setAmount((int) Math.round(initialAmount * 0.7));
+                curProductStock.setItemID(null);
+                // Product to be reordered
+                // Item Low in stock
+                System.out.printf("[Shop] The product %s is low on stock - Reorder Units(%d) - Current Stock(%d) - Initial Stock (%d) - Initial Price(%d)\n",
+                        curProductStock.getName(), curProductStock.getAmount(), curAmount, initialAmount, initialProductStatus.getPrice());
+                return curProductStock;
+
             }
         }
         return null;
@@ -122,14 +122,14 @@ public class ShipmentsConsumer implements Runnable {
             int balance = balanceDb.getBalance().getBalance();
 
             if (balance < shipmentPrice) {
-                System.out.print("[Shop - Shipments] Shop don't have enough money to pay the supplier " +
-                        "Balance(" + balance +") Cost(" + shipmentPrice + ")." );
-                ignoreSupply --;
-                if(ignoreSupply > 0){
+                System.out.print("[Shop] Shop don't have enough money to pay the supplier shipment " +
+                        "Balance(" + balance + ") Cost(" + shipmentPrice + ").");
+                ignoreSupply--;
+                if (ignoreSupply > 0) {
                     System.out.println(" I'm waiting " + timeout + " seconds.");
                     Thread.sleep(timeout * 1000);
                     continue;
-                }else{
+                } else {
                     System.out.println(" The shipment was ignored after the 3rd attempt to pay.");
                     Thread.sleep(timeout * 1000);
                     return -100000;
@@ -143,21 +143,21 @@ public class ShipmentsConsumer implements Runnable {
 
     private Item addProductToStock(Item itemFromShipment) throws Exception {
         // Add the shipment to the stock
-        itemDb.increaseItemAmount(itemFromShipment.getName(),itemFromShipment.getAmount());
+        itemDb.increaseItemAmount(itemFromShipment.getName(), itemFromShipment.getAmount());
         return itemDb.getItem(itemFromShipment.getName());
     }
 
     private void define10ItemsInitialValuesAndQuantities(KafkaConsumer<String, String> kafkaConsumer) throws Exception {
-        int initialProducts = productsRange;
+        int initialProducts = 0;
 
-        System.out.println("[Shop - Shipments] Waiting for the 10 initial products shipment (Amount & Price)," +
+        System.out.println("[Shop] Waiting for the 10 initial products shipments (Amount & Price)," +
                 " ordered by the owner.");
         // Get the first 10 products (price and amount) set by the Owner
-        while (initialProducts > 0) {
+        while (initialProducts < productsRange) {
             ConsumerRecords<String, String> records = kafkaConsumer.poll(1000);
             for (ConsumerRecord<String, String> record : records) {
-                System.out.printf("[Shop - Shipments] Product %d - offset = %d, key = %s, value = %s\n",
-                        initialProducts, record.offset(), record.key(), record.value());
+                //System.out.printf("[Shop - Shipments] Product %d - offset = %d, key = %s, value = %s\n",
+                //        initialProducts, record.offset(), record.key(), record.value());
                 Item item = KafkaShop.deserializeItemFromJSON(record.value());
 
                 // Get the item from the database
@@ -165,13 +165,19 @@ public class ShipmentsConsumer implements Runnable {
                 // Set the initial amount
                 itemToUpdate.setAmount(item.getAmount());
                 // Set price with margin of 30% (multiplied by 1.3)
-                itemToUpdate.setPrice((int)Math.round(item.getPrice() * KafkaShop.MARGIN));
+                itemToUpdate.setPrice((int) Math.round(item.getPrice() * KafkaShop.MARGIN));
                 // Update the item in the database
-                itemDb.updateItem(itemToUpdate.getItemID(),item.getName(),itemToUpdate.getPrice(),itemToUpdate.getAmount());
+                itemDb.updateItem(itemToUpdate.getItemID(), item.getName(), itemToUpdate.getPrice(), itemToUpdate.getAmount());
 
-                // List to save the initial products status
-                initialProductsStatusList.add(itemToUpdate);
-                initialProducts--;
+                System.out.printf("[Shop] Initial Product {%d}: Product(%s) Amount(%d) -- Shipment Price Per Unit(%d) Total(%d) -- Price With Margin(%d) Total (%d)\n",
+                        initialProducts + 1,
+                        item.getName(), item.getAmount(),
+                        item.getPrice(), item.getAmount() * item.getPrice(),
+                        itemToUpdate.getPrice(), itemToUpdate.getAmount() * itemToUpdate.getPrice());
+
+                // Map to save the initial products status
+                initialProductsStatusMap.put(itemToUpdate.getName(), itemToUpdate);
+                initialProducts++;
             }
         }
     }

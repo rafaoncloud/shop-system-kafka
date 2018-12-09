@@ -1,6 +1,7 @@
 package com.costumer;
 
 import com.EItem;
+import com.KafkaShop;
 import com.costumer.kafka.MyReplyConsumer;
 import com.costumer.kafka.PurchasesProducer;
 import com.data.Item;
@@ -15,15 +16,17 @@ public class Costumer {
     public static final ItemTransactions dbItem = ItemTransactions.getInstance();
 
     public static final PurchasesProducer purchasesProducer = PurchasesProducer.getInstance();
-    public static final MyReplyConsumer replyConsumer = new MyReplyConsumer();
+    public static MyReplyConsumer replyConsumer;
 
     public static void main(String[] args) {
 
-        if (args.length == 1) {
-            if (args[0].equalsIgnoreCase("auto")) {
-                randomCostumer();
-            } else if (args[0].equalsIgnoreCase("manual")) {
-                manual();
+        if (args.length <= 2) {
+            if (args[0].equalsIgnoreCase("auto") && (args[1].equalsIgnoreCase("1") ||
+                    args[1].equalsIgnoreCase("2") || args[1].equalsIgnoreCase("3"))) {
+                randomCostumer(args[1]);
+            } else if (args[0].equalsIgnoreCase("manual") && (args[1].equalsIgnoreCase("1") ||
+                    args[1].equalsIgnoreCase("2") || args[1].equalsIgnoreCase("3"))) {
+                manual(args[1]);
             }else {
                 System.out.println("Illegal Arguments: <auto,manual>");
             }
@@ -33,21 +36,30 @@ public class Costumer {
         System.out.println("Costumer Closed");
     }
 
-    public static void randomCostumer() {
+    public static void randomCostumer(String costumerId) {
+        replyConsumer = new MyReplyConsumer(costumerId);
+        Thread readRepliesThread = new Thread(replyConsumer);
+        readRepliesThread.start();
+
         try {
             while (true) {
                 List<Item> items = getProductsFromDatabase();
 
                 int random = randomNumber(items.size() - 1);
                 Item item = items.get(random);
+                item.setItemID(null);
+                random = randomNumber(item.getAmount());
+                item.setAmount(random);
+                int price = item.getPrice();
 
+                // The price number identifies the costumer ID
+                item.setPrice(Integer.parseInt(costumerId));
                 purchasesProducer.send(item);
 
-                System.out.println("Costumer want to buy " + item.getAmount() + " " +
-                        item.getName() + " with a cost of " + item.getPrice()*item.getAmount() + ".");
+                System.out.println("[Random Costumer] Costumer want to buy " + item.getAmount() + " " +
+                        item.getName() + " with a cost of " + price*item.getAmount() + ".");
 
-                replyConsumer.receiveReply();
-                Thread.sleep(1000);
+                Thread.sleep(3000);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -62,9 +74,9 @@ public class Costumer {
         System.out.println(" Stock(" + item.getAmount() + ")");
     }
 
-    public static void manual() {
-        //Thread replyConsumerThread = new Thread(new MyReplyConsumer());
-        //replyConsumerThread.start();
+    public static void manual(String costumerId) {
+        replyConsumer = new MyReplyConsumer(costumerId);
+
         Scanner scanner = new Scanner(System.in);
         String input;
         int index, enumCount = 0;
@@ -89,13 +101,17 @@ public class Costumer {
                     printItem(enumCount,curProductInfo);
                 }
                 enumCount = 0;
-                System.out.println("0 - Exit");
                 System.out.println("list - List Again");
+                System.out.println("replies - Check and read replies");
+                System.out.println("0 - Exit");
                 System.out.print("> ");
                 input = scanner.nextLine();
                 if (input.equalsIgnoreCase("0"))
                     break;
                 else if(input.equalsIgnoreCase("list")){
+                    continue;
+                }else if(input.equalsIgnoreCase("replies")){
+                    replyConsumer.receiveReplyQuickCheck(3);
                     continue;
                 }
                 try {
@@ -105,6 +121,7 @@ public class Costumer {
                     continue;
                 }
                 itemName = EItem.values()[index].toString();
+                curProductInfo = dbItem.getItem(itemName);
 
                 System.out.println("Amount of " + itemName + " to buy: ");
                 System.out.print("> ");
@@ -119,7 +136,8 @@ public class Costumer {
                 item.setAmount(amount);
                 item.setPrice(0);
                 System.out.println("Costumer want to buy " + item.getAmount() + " " +
-                        item.getName() + " with a cost of " + curProductInfo.getPrice()*item.getAmount() + ".");
+                        item.getName() + " with a total cost of " + (curProductInfo.getPrice() * item.getAmount()) + " and each "
+                                + curProductInfo.getPrice() + ".");
                 purchasesProducer.send(item);
                 replyConsumer.receiveReply();
             }

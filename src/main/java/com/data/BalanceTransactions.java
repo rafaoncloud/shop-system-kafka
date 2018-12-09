@@ -118,17 +118,22 @@ public class BalanceTransactions {
         }
     }
 
-    public void dropTable() {
+    public void dropAndCreateTable() {
         Session session = factory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            session.createSQLQuery("DROP TABLE Balance").executeUpdate();
+            session.createSQLQuery("DROP TABLE balance").executeUpdate();
+            tx.commit();
+            tx = session.beginTransaction();
+            session.createSQLQuery("CREATE TABLE balance (" +
+                    "id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY," +
+                    "balance INTEGER NOT NULL)").executeUpdate();
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
-            e.printStackTrace();
+            //e.printStackTrace();
         } finally {
             session.close();
         }

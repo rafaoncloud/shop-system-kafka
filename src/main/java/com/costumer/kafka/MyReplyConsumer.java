@@ -11,17 +11,18 @@ import java.util.Properties;
 
 public class MyReplyConsumer implements Runnable{
 
-    public static final String TOPIC = KafkaShop.MY_REPLY_TOPIC;
     public static final String KEY = "reply";
     public static final String GROUP_ID = "1";
 
     private final KafkaConsumer <String,String> consumer;
+    public final String TOPIC;
 
-    public MyReplyConsumer(){
+    public MyReplyConsumer(String costumerId){
         this.consumer = setUp();
+        TOPIC = KafkaShop.MY_REPLY_TOPIC + costumerId;
 
         consumer.subscribe(Arrays.asList(TOPIC));
-        System.out.println("[Consumer - MyReply] Subscribed to topic " + TOPIC);
+        System.out.println("[Consumer - MyReply] Subscribed to Topic: " + TOPIC);
     }
 
     public void receiveReply(){
@@ -34,6 +35,16 @@ public class MyReplyConsumer implements Runnable{
                 return;
             }
         }
+    }
+
+    public void receiveReplyQuickCheck(int timeoutSeconds){
+            ConsumerRecords<String, String> records = consumer.poll(timeoutSeconds * 1000);
+            for (ConsumerRecord<String, String> record : records) {
+                //System.out.printf("[My Reply] offset = %d, key = %s, value = %s\n",
+                //        record.offset(), record.key(), record.value());
+                System.out.println("[Reply] " + record.value());
+                return;
+            }
     }
 
     @Override

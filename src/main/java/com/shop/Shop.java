@@ -19,12 +19,13 @@ public class Shop {
     public static final BalanceTransactions dbBalance = BalanceTransactions.getInstance();
 
     public static final MyReplyProducer replyProducer = MyReplyProducer.getInstance();
+
     public static final ReorderProducer reorderProducer = ReorderProducer.getInstance();
 
 
     public static void main(String[] args) {
-        //populateDatabaseWithItens();
-        setUpAsCleanShop(0);
+        populateDatabaseWithItens(0);
+        //setUpAsCleanShop(0);
         shop(10);
     }
 
@@ -66,7 +67,7 @@ public class Shop {
         }
     }
 
-    public static boolean setItemPriceAndAmountZero(String itemName) throws Exception {
+    private static boolean setItemPriceAndAmountZero(String itemName) throws Exception {
 
         // The item is already described in the database
         Item item = dbItem.getItem(itemName);
@@ -82,10 +83,10 @@ public class Shop {
         return true;
     }
 
-    public static void populateDatabaseWithItens() {
-        // Drop Tables
-        //dbItem.dropTable();
-        //dbBalance.dropTable();
+    public static void populateDatabaseWithItens(int initialShopBalance) {
+        // Drop AND Create Tables
+        dbItem.dropAndCreateTable();
+        dbBalance.dropAndCreateTable();
 
         // Add content
         dbBalance.addBalance();
@@ -93,5 +94,7 @@ public class Shop {
         for (EItem enumItem : EItem.values()) {
             dbItem.addItem(enumItem.toString(), 0, 0);
         }
+
+        setUpAsCleanShop(initialShopBalance);
     }
 }

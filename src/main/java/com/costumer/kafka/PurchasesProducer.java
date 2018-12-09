@@ -39,7 +39,7 @@ public class PurchasesProducer {
             throw new RuntimeException("Instance not created!!!");
 
         try {
-            producer.send(new ProducerRecord<String,String>(TOPIC,KEY,KafkaShop.serializeItemToJSON(item)));
+            producer.send(new ProducerRecord<String,String>(TOPIC,item.getName(),KafkaShop.serializeItemToJSON(item)));
             producer.flush();
         }catch (Exception e){
             throw e;

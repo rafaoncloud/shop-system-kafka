@@ -194,17 +194,24 @@ public class ItemTransactions {
         }
     }
 
-    public void dropTable() {
+    public void dropAndCreateTable() {
         Session session = factory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            session.createSQLQuery("DROP TABLE Item").executeUpdate();
+            session.createSQLQuery("DROP TABLE item").executeUpdate();
+            tx.commit();
+            tx = session.beginTransaction();
+            session.createSQLQuery("CREATE TABLE item " +
+                    "(id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY," +
+                    " name VARCHAR(50) NOT NULL," +
+                    " price INTEGER NOT NULL," +
+                    " amount INTEGER NOT NULL);").executeUpdate();
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
-            e.printStackTrace();
+            //e.printStackTrace();
         } finally {
             session.close();
         }

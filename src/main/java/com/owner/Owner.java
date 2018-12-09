@@ -179,9 +179,9 @@ public class Owner {
 
         // Randomize items
         for (Item item : items) {
-            int random = randomNumber(5);
+            int random = randomNumber(10);
             item.setPrice(item.getPrice() + random);
-            int amountRandom = randomNumber(20) + 5;
+            int amountRandom = randomNumber(100) + 10;
             item.setAmount(amountRandom);
         }
 
