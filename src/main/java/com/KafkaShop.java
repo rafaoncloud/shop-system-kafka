@@ -14,6 +14,7 @@ public abstract class KafkaShop {
     public static final String PURCHASES_TOPIC = "purchases-topic";
     public static final String REORDER_TOPIC = "reorder-topic";
     public static final String SHIPMENTS_TOPIC = "shipments-topic";
+    public static final String MY_REPLY_STATISTICS_TOPIC ="my-reply-statistics-topic";
 
     public static final String REPLY_KEY = "reply"; // Value - String
     public static final String ITEM_KEY = "transaction"; // Value - Items

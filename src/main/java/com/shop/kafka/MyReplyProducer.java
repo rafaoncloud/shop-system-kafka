@@ -1,6 +1,7 @@
 package com.costumer.kafka;
 
 import com.KafkaShop;
+import com.data.Item;
 import com.data.ItemTransactions;
 import com.fasterxml.jackson.databind.JsonSerializable;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
@@ -30,8 +31,10 @@ public class MyReplyProducer {
 
     private static MyReplyProducer single_instance = null;
 
+    public static final String STATISTICS_TOPIC = KafkaShop.MY_REPLY_STATISTICS_TOPIC;
+
     public static final String TOPIC = KafkaShop.MY_REPLY_TOPIC;
-    public static final String KEY = "reply";
+    //public static final String KEY = "reply";
     private static Producer<String,String> producer;
 
     private MyReplyProducer(){
@@ -45,13 +48,21 @@ public class MyReplyProducer {
         return single_instance;
     }
 
-    public void send(String replyMessage, int costumerId) throws Exception{
+    /**
+     * If item has a null price, it failed to sell
+     * @param item
+     * @param costumerId
+     * @throws Exception
+     */
+    public void send(/*String replyMessage,*/ Item item, int costumerId) throws Exception{
 
         if(single_instance == null)
             throw new RuntimeException("Instance not created!!!");
 
         try {
-            producer.send(new ProducerRecord<String,String>(TOPIC + costumerId,KEY,replyMessage));
+            String key = item.getName();
+            producer.send(new ProducerRecord<String,String>(STATISTICS_TOPIC,key,KafkaShop.serializeItemToJSON(item)));
+            producer.send(new ProducerRecord<String,String>(TOPIC + costumerId,key,KafkaShop.serializeItemToJSON(item)));
             producer.flush();
         }catch (Exception e){
             throw e;

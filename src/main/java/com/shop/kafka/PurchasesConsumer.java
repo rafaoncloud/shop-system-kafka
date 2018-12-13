@@ -45,11 +45,19 @@ public class PurchasesConsumer implements Runnable {
                 try {
                     Item costumerRequest = KafkaShop.deserializeItemFromJSON(record.value());
                     int costumerId = costumerRequest.getPrice();
-                    String reply = handlePurchase(costumerRequest, costumerId);
+                    // REPLY
+                    Item item = handlePurchase(costumerRequest, costumerId);
 
-                    replyProducer.send(reply,costumerId);
-                    System.out.println("[Shop - Purchase] " + reply +
-                            "| Balance(" + dbBalance.getBalance().getBalance() + ").");
+                    replyProducer.send(item,costumerId);
+
+                    if (item.getPrice() <= 0) {
+                        System.out.println("[Reply] Shop refuses the order and provided " + item.getAmount() + " " + item.getName() +
+                                " | Balance(" + dbBalance.getBalance().getBalance() + ").");
+
+                    } else {
+                        System.out.println("[Reply] Shop accepts the order and provided " + item.getAmount() + " " + item.getName() +
+                                " with a cost of " + item.getAmount() * item.getPrice() + " | Balance(" + dbBalance.getBalance().getBalance() + ").");
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -57,20 +65,23 @@ public class PurchasesConsumer implements Runnable {
         }
     }
 
-    private String handlePurchase(Item costumerRequest,final int costumerId) throws Exception {
+    private Item handlePurchase(final Item costumerRequest,final int costumerId) throws Exception {
         String itemName = costumerRequest.getName();
         int amountToSell = costumerRequest.getAmount();
         Item inDbItem = dbItem.getItem(itemName);
         int totalCost = amountToSell * inDbItem.getPrice();
 
-        // Not enough items - amount to sell
+        // FAIL - Not enough items - amount to sell
         if(amountToSell > inDbItem.getAmount()){
-            return "Shop rejected the order from costumer " + costumerId + ", there is not enough " + itemName + ".";
+            costumerRequest.setPrice(-1000);
+            return costumerRequest;
         }
-        // The shop as the requested amount
+
+        // SUCESS - The shop as the requested amount
         dbBalance.balanceIncrease(totalCost);
         dbItem.decreaseItemAmount(itemName,amountToSell);
-        return "Shop accepts the order and provided " + amountToSell + " " + itemName + " with a cost of " + totalCost + ".";
+        costumerRequest.setPrice(inDbItem.getPrice());
+        return costumerRequest;
     }
 
     private KafkaConsumer<String,String> setUp(){
